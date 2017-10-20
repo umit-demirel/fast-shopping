@@ -4,6 +4,7 @@
 include 'system/Controller.php';
 include_once 'bootstrap.php';*/
 //include_once 'bootstrap.php';
+session_start();
 include_once 'config.php';
 function __autoload($className){
 	include_once 'system/'.$className.'.php';

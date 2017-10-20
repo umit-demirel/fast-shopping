@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/style.css" />
+	<link rel="stylesheet" href="<?php echo SITE_URL; ?>/assets/css/style.css" />
 	<title>Ana Sayfa</title>
 </head>
 <body>
