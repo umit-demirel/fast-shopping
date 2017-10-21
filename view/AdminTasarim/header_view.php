@@ -83,7 +83,7 @@ if(isset($_COOKIE["fastshoppingAdminEmail"]) && isset($_COOKIE["fastshoppingAdmi
 
       <header class="main-header">
         <!-- Logo -->
-        <a href="<?php echo SITE_URL; ?>/admin/panel" class="logo">
+        <a href="<?php echo SITE_URL; ?>/admin/dashboard" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>A</b></span>
           <!-- logo for regular state and mobile devices -->
@@ -285,7 +285,10 @@ if(isset($_COOKIE["fastshoppingAdminEmail"]) && isset($_COOKIE["fastshoppingAdmi
                 <i class="fa fa-plus-square"></i> <span>Kategori Yönetimi</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-				<li><a href="<?php echo SITE_URL; ?>/kategori/ana_kategori_ekle"><i class="fa fa-circle-o"></i>Ana Kategori Ekle</a></li>
+				<li><a href="<?php echo SITE_URL; ?>/AdminKategori/ana_kategori_ekle"><i class="fa fa-circle-o"></i>Ana Kategori Ekle</a></li>
+				<li><a href="<?php echo SITE_URL; ?>/AdminKategori/ana_kategoriler"><i class="fa fa-circle-o"></i>Ana Kategori İşlemleri</a></li>
+				<li><a href="<?php echo SITE_URL; ?>/AdminKategori/alt_kategori_ekle"><i class="fa fa-circle-o"></i>Alt Kategori Ekle</a></li>
+				<li><a href="<?php echo SITE_URL; ?>/AdminKategori/alt_kategoriler"><i class="fa fa-circle-o"></i>Alt Kategori İşlemleri</a></li>
 
 				
               </ul>
