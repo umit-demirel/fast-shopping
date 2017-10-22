@@ -51,7 +51,7 @@ class admin extends Controller{
 			$model = $this->load->model("index");
 			
 			$eposta = $_POST["eposta"];
-			$parola_query = $model->sorgula("select * from admin where email='$eposta'");
+			$parola_query = $model->sorgula("select * from admin where EpostaAdresi='$eposta'");
 			if(count($parola_query)>0)
 			{
 				//Admin eposta adresi doğru ise parolayı al

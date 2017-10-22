@@ -1,5 +1,5 @@
 <section class="content-header">
-	<h1>Ana Kategori İşlemleri</h1>
+	<h1>Alt Kategori İşlemleri</h1>
 </section>
 <section class="content">
 	<div class="box">
@@ -30,19 +30,19 @@
 				}
 			}
 			?>
-			<form action="<?php echo SITE_URL; ?>/AdminKategori/ana_kategori_ara" method="post">
-				<input type="text" name="kategori_adi" placeholder="Kategori Adı" />
+			<form action="<?php echo SITE_URL; ?>/AdminKategori/alt_kategori_ara" method="post">
+				<input type="text" name="kategori_adi" placeholder="Alt Kategori Adı" />
 				<input type="submit" value="Ara!" />
-				<a href="<?php echo SITE_URL; ?>/AdminKategori/ana_kategoriler">
-					Tüm Kategorileri Listele
+				<a href="<?php echo SITE_URL; ?>/AdminKategori/alt_kategoriler">
+					Tüm Alt Kategorileri Listele
 				</a>
 			</form>
-			
-			
+			<br/>
 			<table border="1" width="100%" align="center" style="background-color:#f4f4f4; border:1px solid #ccc;">
 				<tr>
-					<td width="30%" style="padding:5px;">Kategori Adı</b></td>
-					<td width="50%" align="center">Açıklama</b></td>
+					<td width="25%" style="padding:5px;">Kategori Adı</b></td>
+					<td width="25%" style="padding:5px;">Ana Kategori Adı</b></td>
+					<td width="30%" align="center">Açıklama</b></td>
 					<td width="20%" align="center">Eylemler</td>
 				</tr>
 			</table>
@@ -54,13 +54,15 @@
 				$kategori_id = $value["KategoriID"];
 				$kategori_adi = $value["KategoriAdi"];
 				$kategori_aciklama = $value["Aciklama"];
+				$ana_kategori_adi = $value["ustkategoriadi"];
 				echo "
 					<tr>
-					<td width='30%' style='padding:5px;'>$kategori_adi</b></td>
-					<td width='50%' style='padding:5px;' >".substr($kategori_aciklama,0,50)."...</b></td>
+					<td width='25%' style='padding:5px;'>$kategori_adi</b></td>
+					<td width='25%' style='padding:5px;'>$ana_kategori_adi</b></td>
+					<td width='30%' style='padding:5px;' >".substr($kategori_aciklama,0,50)."...</b></td>
 					<td width='20%' align='center'>
-						<a href='".SITE_URL."/AdminKategori/ana_kategori_duzenle/$kategori_id'><i class='fa fa-edit'></i> Düzenle</a> 
-						<a href='".SITE_URL."/AdminKategori/ana_kategori_sil/$kategori_id'><i class='fa fa-remove'></i> Sil</a>
+						<a href='".SITE_URL."/AdminKategori/alt_kategori_duzenle/$kategori_id'><i class='fa fa-edit'></i> Düzenle</a> 
+						<a href='".SITE_URL."/AdminKategori/alt_kategori_sil/$kategori_id'><i class='fa fa-remove'></i> Sil</a>
 					</td>
 					</tr>
 				";

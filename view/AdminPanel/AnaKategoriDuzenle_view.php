@@ -9,9 +9,9 @@
 			$kategori_adi=""; $kategori_id=""; $aciklama="";
 			foreach($kategori as $value)
 			{
-				$kategori_adi = $value["kategoriAdi"];
-				$kategori_id = $value["kategoriID"];
-				$aciklama = $value["aciklama"];
+				$kategori_adi = $value["KategoriAdi"];
+				$kategori_id = $value["KategoriID"];
+				$aciklama = $value["Aciklama"];
 				$sayac++;
 			}
 			if($sayac==0)

@@ -5,7 +5,7 @@ class adminModel extends Model{
 		parent::__construct();
 	}
 	public function adminLogin($eposta,$parola){
-		$login_query = $this->db->select("select * from admin where email='$eposta' and parola='$parola'");
+		$login_query = $this->db->select("select * from admin where EpostaAdresi='$eposta' and Sifre='$parola'");
 		$isValue = count($login_query);
 		if($isValue > 0)
 		{
@@ -18,9 +18,9 @@ class adminModel extends Model{
 	}
 	public function anaKategoriEkle($kategori_adi,$kategori_aciklama){
 		$data = array(
-			"kategoriAdi"=>"$kategori_adi",
-			"altKategoriID"=>0,
-			"aciklama"=>"$kategori_aciklama"
+			"AnaKategoriID"=>0,
+			"KategoriAdi"=>"$kategori_adi",
+			"Aciklama"=>"$kategori_aciklama"
 		);
 		$kategori_ekle = $this->db->insert("kategoriler",$data);
 		if($kategori_ekle)
@@ -31,22 +31,22 @@ class adminModel extends Model{
 		}
 	}
 	public function anaKategoriListesi(){
-		return $this->db->select("select * from kategoriler where altKategoriID=0 order by kategoriAdi asc");
+		return $this->db->select("select * from kategoriler where AnaKategoriID=0 order by KategoriAdi asc");
 	}
 	public function getKategori($id)
 	{
-		return $this->db->select("select * from kategoriler where kategoriID=$id");
+		return $this->db->select("select * from kategoriler where KategoriID=$id");
 	}
 	public function kategoriUpdate($kategori_id,$data)
 	{
-		return $this->db->update("kategoriler",$data,"kategoriID=$kategori_id");
+		return $this->db->update("kategoriler",$data,"KategoriID=$kategori_id");
 	}
 	public function kategoriSil($kategori_id)
 	{
-		return $this->db->delete("kategoriler","kategoriID=$kategori_id");
+		return $this->db->delete("kategoriler","KategoriID=$kategori_id");
 	}
 	public function kategoriKontrol($kategori_id){
-		$query = $this->db->select("select * from kategoriler where kategoriID=$kategori_id");
+		$query = $this->db->select("select * from kategoriler where KategoriID=$kategori_id");
 		$isValue = count($query);
 		if($isValue > 0)
 		{
@@ -59,6 +59,26 @@ class adminModel extends Model{
 	}
 	public function anaKategoriAra($kategori_adi)
 	{
-		return $this->db->select("select * from kategoriler where kategoriAdi like '%".$kategori_adi."%' order by kategoriAdi asc");
+		return $this->db->select("select * from kategoriler where KategoriAdi like '%".$kategori_adi."%' order by KategoriAdi asc");
 	}
+	public function altKategoriEkle($data){
+		$query = $this->db->insert("kategoriler",$data);
+		if($query)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function altKategoriListesi(){
+		return $this->db->select("SELECT altKT.KategoriID, altKT.KategoriAdi, altKT.Aciklama, ustKT.KategoriAdi AS 'ustkategoriadi' FROM kategoriler AS altKT, kategoriler AS ustKT  WHERE ustKT.KategoriID=altKT.AnaKategoriID");
+	}
+	public function altKategoriAra($kategori_adi){
+		return $this->db->select("SELECT altKT.KategoriID, altKT.KategoriAdi, altKT.Aciklama, ustKT.KategoriAdi AS 'ustkategoriadi' FROM kategoriler AS altKT, kategoriler AS ustKT  WHERE ustKT.KategoriID=altKT.AnaKategoriID and altKT.KategoriAdi like '%".$kategori_adi."%'");
+	}
+	public function altKategoriSil($kategori_id)
+	{
+		return $this->db->delete("kategoriler","KategoriID=$kategori_id");
+	}
+	
 }
