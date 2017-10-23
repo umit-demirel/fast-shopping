@@ -93,6 +93,131 @@ class admin extends Controller{
 			$this->load->view("AdminPanel/adminSifremiUnuttum");
 		}
 	}
+	public function profil($mesaj=false)
+	{
+		if(isset($mesaj))
+		{
+			$data["mesaj"] = $mesaj;
+		}
+		$model = $this->load->model("adminModel");
+		$admin_email = $_SESSION["admin_username"];
+		$admin_email_kotrol = $model->adminEmailKontrol($admin_email);
+		if($admin_email_kotrol==true)
+		{
+			$data["profil"] = $model->getProfil($admin_email);
+			$this->load->view("AdminTasarim/header");
+			$this->load->view("AdminPanel/Profil",$data);
+			$this->load->view("AdminTasarim/footer");
+		}else{
+			//Admin epostası yanlış ise cookie veya session değiştirilmiştir.
+			//Bu nedenle cikis a yönlendirildi.
+			header("Location:".SITE_URL."/admin/cikis");
+		}
+		
+	}
+	public function profil_resmi_yukle()
+	{
+		$tmp_name = $_FILES["profil_img"]["tmp_name"];
+		if($tmp_name==null)
+		{
+			header("Location:".SITE_URL."/admin/profil/noimage");
+		}else{
+			$file_type = $_FILES["profil_img"]["type"];
+			$file_size = $_FILES["profil_img"]["size"];
+			$file_name = $_FILES["profil_img"]["name"];
+			if($file_type=="image/jpeg" || $file_type=="image/png" || $file_type=="image/gif" || $file_type=="image/bmp")
+			{
+				if($file_size<=1048576)
+				{
+					//dosya yüklenebilir
+					$uzanti = explode(".",$file_name);
+					$yeni_adi = "profile_image.".$uzanti[1];
+					$upload = move_uploaded_file($tmp_name,"uploads/admin_images/profile_image.".$uzanti[1]);
+					if($upload)
+					{
+						$model = $this->load->model("adminModel");
+						$data = array(
+							"ProfilResmi"=>"$yeni_adi"
+						);
+						$image_update = $model->profilGuncelle($data);
+						if(!$image_update)
+						{
+							header("Location:".SITE_URL."/admin/profil/upload_success_but_data_error");
+						}
+						header("Location:".SITE_URL."/admin/profil/upload_success");
+					}else{
+						header("Location:".SITE_URL."/admin/profil/upload_error");
+					}
+				}else{
+					//dosya boyutu 2M dan büyük
+					header("Location:".SITE_URL."/admin/profil/file_size_error");
+				}
+			}else{
+				header("Location:".SITE_URL."/admin/profil/type_error");
+			}
+			
+			
+			
+			
+		}
+	}
+	public function profil_guncelle()
+	{
+		if(isset($_POST["state"]))
+		{
+			$adsoyad = $_POST["adsoyad"];
+			$model = $this->load->model("adminModel");
+			$data = array(
+				"AdSoyad"=>"$adsoyad"
+			);
+			$update = $model->profilGuncelle($data);
+			if($update)
+			{
+				header("Location:".SITE_URL."/admin/profil/update_data_success");
+			}else{
+				header("Location:".SITE_URL."/admin/profil/update_data_error");
+			}
+		}else{
+			
+		}
+	}
+	public function giris_bilgileri_guncelle()
+	{
+		if(isset($_POST["state"]))
+		{
+			if(isset($_POST["email"]) && isset($_POST["sifre"]) && isset($_POST["yeni_sifre"]))
+			{
+				$email = $_POST["email"];
+				$sifre = $_POST["sifre"];
+				$yeni_sifre = $_POST["yeni_sifre"];
+				$model = $this->load->model("adminModel");
+				$sorgula = $model->adminLogin($email,$sifre);
+				if($sorgula==true)
+				{
+					$data = array(
+					"EpostaAdresi"=>"$email",
+					"Sifre"=>"$yeni_sifre"
+					);
+					$update = $model->profilGuncelle($data);
+					if($update)
+					{
+						header("Location:".SITE_URL."/admin/cikis");
+					}else{
+						header("Location:".SITE_URL."/admin/profil/new_login_error");
+					}
+				}else{
+					header("Location:".SITE_URL."/admin/profil/login_data_error");
+				}
+				
+			}
+			else{
+				header("Location:".SITE_URL."/admin/profil/parameters_error");
+			}
+		}
+		else{
+			header("Location:".SITE_URL."/admin/profil");
+		}
+	}
 }
 
 ?>

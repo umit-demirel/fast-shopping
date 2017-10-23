@@ -278,7 +278,12 @@ if(isset($_COOKIE["fastshoppingAdminEmail"]) && isset($_COOKIE["fastshoppingAdmi
 <!--            
             <li class="header">ANA MENÜLER</li>
 -->         
-				
+			<li>
+              <a href="<?php echo SITE_URL; ?>/admin/profil">
+                <i class="fa fa-image"></i>
+                <span>Profil İşlemleri</span><i class="fa fa-angle-left pull-right"></i>
+              </a>
+            </li>	
 			
 			<li class="treeview active">
               <a href="#">

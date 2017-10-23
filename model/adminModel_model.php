@@ -4,6 +4,7 @@ class adminModel extends Model{
 	public function __construct(){
 		parent::__construct();
 	}
+	/*Admin Login İşlemleri*/
 	public function adminLogin($eposta,$parola){
 		$login_query = $this->db->select("select * from admin where EpostaAdresi='$eposta' and Sifre='$parola'");
 		$isValue = count($login_query);
@@ -16,6 +17,8 @@ class adminModel extends Model{
 			return false;
 		}
 	}
+	/*-------------------------------------------------------------------*/
+	/*Kategori İşlemleri*/
 	public function anaKategoriEkle($kategori_adi,$kategori_aciklama){
 		$data = array(
 			"AnaKategoriID"=>0,
@@ -79,6 +82,26 @@ class adminModel extends Model{
 	public function altKategoriSil($kategori_id)
 	{
 		return $this->db->delete("kategoriler","KategoriID=$kategori_id");
+	}
+	/*-----------------------------------------------------------------------*/
+	/*Profil İşlemleri*/
+	public function adminEmailKontrol($admin_email)
+	{
+		$query = $this->db->select("select * from admin where EpostaAdresi='$admin_email'");
+		if(count($query)>0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getProfil($admin_email)
+	{
+		return $this->db->select("select * from admin where EpostaAdresi='$admin_email'");
+	}
+	public function profilGuncelle($data)
+	{
+		return $this->db->update("admin",$data,"AdminID=1");
 	}
 	
 }

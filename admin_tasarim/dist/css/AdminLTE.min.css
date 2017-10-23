@@ -17,3 +17,31 @@
 	width:350px;
 	font-weight:normal;
 }
+
+/*E-Ticaret Projesi CSS Kodları*/
+.profil_content{
+	display:block;
+	border:1px solid #ccc;
+	padding:10px;
+	overflow:hidden;
+}
+.profil_content .profil_img{
+	display:block;
+	float:left;
+	margin-right:30px;
+	width:150px;
+	height:150px;
+	border:1px solid #ccc;
+}
+.profil_content .profil_img img{
+	display:block;
+	width:140px; height:140px;
+	margin-left:auto; margin-right:auto;
+	padding:5px;
+}
+.profil_content .profil_detail{
+	display:block;
+	float:left;
+	width:auto;
+	padding:10px;
+}	
