@@ -103,5 +103,44 @@ class adminModel extends Model{
 	{
 		return $this->db->update("admin",$data,"AdminID=1");
 	}
+	/*-------------------------------------------*/
+	/*Makale İşlemleri*/
+	public function makaleListesi()
+	{
+		return $this->db->select("select * from makaleler order by MakaleID desc");
+	}
+	public function makaleEkle($data){
+		$query = $this->db->insert("makaleler",$data);
+		if($query)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getMakaleKontrol($id)
+	{
+		$query = $this->db->select("select * from makaleler where MakaleID='$id'");
+		if(count($query)>0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getMakale($id)
+	{
+		$query = $this->db->select("select * from makaleler where MakaleID='$id'");
+		return $query;
+	}
+	public function makaleSil($id)
+	{
+		return $this->db->delete("makaleler","MakaleID=$id");
+	}
+	public function makaleGuncelle($data,$id)
+	{
+		return $this->db->update("makaleler",$data,"MakaleID=$id");
+	}
+	/*--------------------------------------------*/
 	
 }

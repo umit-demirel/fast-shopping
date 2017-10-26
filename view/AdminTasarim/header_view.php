@@ -299,6 +299,18 @@ if(isset($_COOKIE["fastshoppingAdminEmail"]) && isset($_COOKIE["fastshoppingAdmi
               </ul>
             </li>
 			
+			<li class="treeview active">
+              <a href="#">
+                <i class="fa fa-plus-square"></i> <span>Makale Yönetimi</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+				<li><a href="<?php echo SITE_URL; ?>/AdminMakale/makale_ekle"><i class="fa fa-circle-o"></i>Yeni Makale Ekle</a></li>
+				<li><a href="<?php echo SITE_URL; ?>/AdminMakale/makaleler"><i class="fa fa-circle-o"></i>Makale İşlemleri</a></li>
+
+				
+              </ul>
+            </li>
+			
 			
 			
 			<li>
