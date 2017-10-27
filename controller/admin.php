@@ -218,6 +218,42 @@ class admin extends Controller{
 			header("Location:".SITE_URL."/admin/profil");
 		}
 	}
+	public function site_ayarlari($mesaj=false)
+	{
+		if(isset($mesaj))
+		{
+			$data["mesaj"] = $mesaj;
+ 		}
+		$model = $this->load->model("adminModel");
+		if(isset($_POST["state"]))
+		{
+			$title=$_POST["title"];
+			$description=$_POST["description"];
+			$keyword=$_POST["keyword"];
+			$google_code=$_POST["google_code"];
+			$data = array(
+				"Title"=>"$title",
+				"Description"=>"$description",
+				"Keyword"=>"$keyword",
+				"GoogleCode"=>"$google_code"
+			);
+			$guncelle = $model->siteAyarGuncelle($data);
+			if($guncelle)
+			{
+				header("Location:".SITE_URL."/admin/site_ayarlari/success");
+			}else{
+				header("Location:".SITE_URL."/admin/site_ayarlari/error");
+			}
+			
+		}else{
+			$site_ayarlari = $model->getSiteAyarlari();
+			$data["site_ayarlari"]=$site_ayarlari;
+			$this->load->view("AdminTasarim/header");
+			$this->load->view("AdminPanel/SiteAyarlari",$data);
+			$this->load->view("AdminTasarim/footer");
+		}
+		
+	}
 }
 
 ?>

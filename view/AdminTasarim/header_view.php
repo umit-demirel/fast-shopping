@@ -63,8 +63,8 @@ if(isset($_COOKIE["fastshoppingAdminEmail"]) && isset($_COOKIE["fastshoppingAdmi
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-	<script type="text/javascript" src="<?php echo SITE_URL; ?>assets/js/validation/jquery.js"></script>
-	<script type="text/javascript" src="<?php echo SITE_URL; ?>assets/js/validation/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="<?php echo SITE_URL; ?>/assets/js/validation/jquery.js"></script>
+	<script type="text/javascript" src="<?php echo SITE_URL; ?>/assets/js/validation/jquery.validate.min.js"></script>
 	<style type="text/css">
 	tr{
 		border:1px solid #ccc;
@@ -311,7 +311,12 @@ if(isset($_COOKIE["fastshoppingAdminEmail"]) && isset($_COOKIE["fastshoppingAdmi
               </ul>
             </li>
 			
-			
+			<li>
+              <a href="<?php echo SITE_URL; ?>/admin/site_ayarlari">
+                <i class="fa fa-gears"></i>
+                <span>Site Ayarları Yönetimi</span><i class="fa fa-angle-left pull-right"></i>
+              </a>
+            </li>
 			
 			<li>
               <a href="<?php echo SITE_URL; ?>/AdminSlider/Slider">

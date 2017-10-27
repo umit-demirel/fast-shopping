@@ -142,5 +142,15 @@ class adminModel extends Model{
 		return $this->db->update("makaleler",$data,"MakaleID=$id");
 	}
 	/*--------------------------------------------*/
+	/*Site Ayarları*/
+	public function getSiteAyarlari()
+	{
+		return $this->db->select("select * from siteayarlari where SiteAyariID=1");
+	}
+	public function siteAyarGuncelle($data)
+	{
+		return $this->db->update("siteayarlari",$data,"SiteAyariID=1");
+	}
+	/*--------------------------------------------*/
 	
 }
