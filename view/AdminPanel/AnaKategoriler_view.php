@@ -61,6 +61,7 @@
 					<td width='20%' align='center'>
 						<a href='".SITE_URL."/AdminKategori/ana_kategori_duzenle/$kategori_id'><i class='fa fa-edit'></i> Düzenle</a> 
 						<a href='".SITE_URL."/AdminKategori/ana_kategori_sil/$kategori_id'><i class='fa fa-remove'></i> Sil</a>
+						<!--<a href='".SITE_URL."/AdminKategori/ana_kategori_arsiv/$kategori_id'><i class='fa fa-remove'></i> Arşivle</a>-->
 					</td>
 					</tr>
 				";

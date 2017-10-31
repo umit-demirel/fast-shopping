@@ -33,8 +33,10 @@ class adminModel extends Model{
 			return false;
 		}
 	}
+	
 	public function anaKategoriListesi(){
 		return $this->db->select("select * from kategoriler where AnaKategoriID=0 order by KategoriAdi asc");
+		/*return $this->db->select("select * from kategoriler where AnaKategoriID=0 and KategoriID not in (select kategori_arsiv.KategoriID FROM kategori_arsiv) order by KategoriAdi asc");*/
 	}
 	public function getKategori($id)
 	{
@@ -152,5 +154,57 @@ class adminModel extends Model{
 		return $this->db->update("siteayarlari",$data,"SiteAyariID=1");
 	}
 	/*--------------------------------------------*/
+	/*Ana Kategori Arşivleme (Şu an kullanılmıyor...)*/
+	public function arsivEkle($id)
+	{
+		$data = array(
+			"KategoriID"=>$id
+		);
+		return $this->db->insert("kategori_arsiv",$data);
+		
+	}
+	public function getKategoriArsivleri()
+	{
+		return $this->db->select("select * from kategori_arsiv,kategoriler where kategori_arsiv.KategoriID = kategoriler.KategoriID");
+	}
+	/*----------------------------------------------*/
+	/*Slider Resimleri*/
+	public function getSliderImages()
+	{
+		return $this->db->select("select * from sliderresimleri order by SiraNo asc");
+	}
+	public function sliderImageEkle($data)
+	{
+		return $this->db->insert("sliderresimleri",$data);
+	}
+	public function sliderImageKontrol($id)
+	{
+		$query = $this->db->select("select * from sliderresimleri where SliderItemID='$id'");
+		if(count($query)>0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function sliderImageSil($id)
+	{
+		$query = $this->db->delete("sliderresimleri","SliderItemID=$id");
+		if($query)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getSliderImage($id)
+	{
+		return $this->db->select("select * from sliderresimleri where SliderItemID=$id");
+	}
+	public function sliderImageUpdate($data,$id)
+	{
+		return $this->db->update("sliderresimleri",$data,"SliderItemID=$id");
+	}
+	/*----------------------------------------------*/
 	
 }

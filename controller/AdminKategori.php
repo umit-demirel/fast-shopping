@@ -243,6 +243,27 @@ class AdminKategori extends Controller{
 			header("Location:".SITE_URL."/AdminKategori/alt_kategoriler/error");
 		}
 	}
+	/*
+	public function ana_kategori_arsiv($id=false)
+	{
+		$model = $this->load->model("adminModel");
+		$arsiv_ekle = $model->arsivEkle($id);
+		if($arsiv_ekle)
+		{
+			header("Location:".SITE_URL."/AdminKategori/ana_kategoriler/success");
+		}else{
+			header("Location:".SITE_URL."/AdminKategori/ana_kategoriler/error");
+		}
+	}
+	public function kategori_arsivleri()
+	{
+		$model = $this->load->model("adminModel");
+		$data["arsivler"] = $model->getKategoriArsivleri();
+		$this->load->view("AdminTasarim/header");
+		$this->load->view("AdminPanel/KategoriArsivleri",$data);
+		$this->load->view("AdminTasarim/footer");
+	}
+	*/
 }
 
 ?>
