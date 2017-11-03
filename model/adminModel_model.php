@@ -206,5 +206,62 @@ class adminModel extends Model{
 		return $this->db->update("sliderresimleri",$data,"SliderItemID=$id");
 	}
 	/*----------------------------------------------*/
+	/*Footer Blok İşlemleri*/
+	public function footerBlokEkle($data)
+	{
+		return $this->db->insert("footerbloklari",$data);
+	}
+	public function footerBlokListesi()
+	{
+		return $this->db->select("select * from footerbloklari order by BlokSiraNo asc");
+	}
+	public function footerBlokKontrol($id)
+	{
+		$query = $this->db->select("select * from footerbloklari where FooterBlokID=$id");
+		if(count($query)>0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getFooterBlok($id)
+	{
+		return $this->db->select("select * from footerbloklari where FooterBlokID=$id");
+	}
+	public function footerBlokGuncelle($data,$id)
+	{
+		return $this->db->update("footerbloklari",$data,"FooterBlokID=$id");
+	}
+	public function footerBlokSil($id)
+	{
+		return $this->db->delete("footerbloklari","FooterBlokID=$id");
+	}
+	public function getFooterLinkler()
+	{
+		return $this->db->select("select * from footerlinkleri,footerbloklari,makaleler where footerlinkleri.MakaleID=makaleler.MakaleID and footerlinkleri.FooterBlokID=footerbloklari.FooterBlokID");
+	}
+	public function footerLinkEkle($data){
+		return $this->db->insert("footerlinkleri",$data);
+	}
+	public function footerLinkSorgula($id)
+	{
+		$query = $this->db->select("select * from footerlinkleri where FooterLinkID=$id");
+		if(count($query)>0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getFooterLink($id)
+	{
+		return $this->db->select("select * from footerlinkleri,footerbloklari,makaleler where footerlinkleri.MakaleID=makaleler.MakaleID and footerlinkleri.FooterBlokID=footerbloklari.FooterBlokID and FooterLinkID=$id");
+	}
+	public function footerLinkSil($id)
+	{
+		return $this->db->delete("footerlinkleri","FooterLinkID=$id");
+	}
+	/*----------------------------------------------*/
 	
 }

@@ -320,6 +320,19 @@ if(isset($_COOKIE["fastshoppingAdminEmail"]) && isset($_COOKIE["fastshoppingAdmi
               </ul>
             </li>
 			
+			<li class="treeview active">
+              <a href="#">
+                <i class="fa fa-plus-square"></i> <span>Footer Yönetimi</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+				<li><a href="<?php echo SITE_URL; ?>/AdminFooter/blok_ekle"><i class="fa fa-circle-o"></i>Footer Bloğu Ekle</a></li>
+				<li><a href="<?php echo SITE_URL; ?>/AdminFooter/bloklar"><i class="fa fa-circle-o"></i>Footer Blok Listesi</a></li>
+				<li><a href="<?php echo SITE_URL; ?>/AdminFooter/link_ekle"><i class="fa fa-circle-o"></i>Blok İçi Link Ekle</a></li>
+				<li><a href="<?php echo SITE_URL; ?>/AdminFooter/linkler"><i class="fa fa-circle-o"></i>Blok İçi Link Listesi</a></li>
+				
+              </ul>
+            </li>
+			
 			<li>
               <a href="<?php echo SITE_URL; ?>/admin/site_ayarlari">
                 <i class="fa fa-gears"></i>
