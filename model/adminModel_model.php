@@ -263,5 +263,29 @@ class adminModel extends Model{
 		return $this->db->delete("footerlinkleri","FooterLinkID=$id");
 	}
 	/*----------------------------------------------*/
+	/*E-Bülten Kayıt Modülü*/
+	public function ebultenKayit($data)
+	{
+		return $this->db->insert("ebulten",$data);
+	}
+	public function getEbultenListesi()
+	{
+		return $this->db->select("select * from ebulten order by EbultenID desc");
+	}
+	public function ebultenKontrol($id)
+	{
+		$query = $this->db->select("select * from ebulten where EbultenID=$id");
+		if(count($query)>0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function ebultenSil($id)
+	{
+		return $this->db->delete("ebulten","EbultenID=$id");
+	}
+	/*----------------------------------------------*/
 	
 }

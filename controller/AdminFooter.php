@@ -122,7 +122,7 @@ class AdminFooter extends Controller{
 		{
 			$link_adi = trim($_POST["link_adi"]);
 			$makale_id = 0;
-			$url="";
+			$url=trim($_POST["url"]);
 			$blok_id = "";
 			
 			if(isset($_POST["blok"]))
