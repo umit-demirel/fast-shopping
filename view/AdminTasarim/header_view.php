@@ -357,6 +357,13 @@ if(isset($_COOKIE["fastshoppingAdminEmail"]) && isset($_COOKIE["fastshoppingAdmi
             </li>
 			
 			<li>
+              <a href="<?php echo SITE_URL; ?>/AdminSosyalMedyaLink/sosyal_medya_linkleri">
+                <i class="fa fa-link"></i>
+                <span>Sosyal Medya Linkleri</span><i class="fa fa-angle-left pull-right"></i>
+              </a>
+            </li>
+			
+			<li>
               <a href="<?php echo SITE_URL; ?>/AdminReklam/Reklam">
                 <i class="fa fa-line-chart"></i>
                 <span>Reklam Yönetimi</span><i class="fa fa-angle-left pull-right"></i>

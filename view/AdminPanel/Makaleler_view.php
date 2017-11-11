@@ -28,9 +28,9 @@
 		
 			<table border="1" width="100%" align="center" style="background-color:#f4f4f4; border:1px solid #ccc;">
 				<tr>
-					<td width="60%" style="padding:5px;">Makale Başlığı</b></td>
-					<td width="20%" align="center" style="padding:5px;">Eklenme Tarihi</b></td>
-					<td width="20%" align="center">Eylemler</td>
+					<td width="60%" style="padding:5px;"><b>Makale Başlığı</b></td>
+					<td width="20%" align="center" style="padding:5px;"><b>Eklenme Tarihi</b></td>
+					<td width="20%" align="center"><b>Eylemler</b></td>
 				</tr>
 			</table>
 			<table border="1" width="100%" align="center" style="border:1px solid #ccc;">

@@ -287,5 +287,37 @@ class adminModel extends Model{
 		return $this->db->delete("ebulten","EbultenID=$id");
 	}
 	/*----------------------------------------------*/
+	/*Sosyal Medya Linkleri*/
+	public function sosyalMedyaLinkleri()
+	{
+		return $this->db->select("select * from sosyalmedyalinkleri");
+	}
+	public function sosyalMedyaLinkEkle($data)
+	{
+		return $this->db->insert("sosyalmedyalinkleri",$data);
+	}
+	public function sosyalMedyaLinkSil($id)
+	{
+		return $this->db->delete("sosyalmedyalinkleri","LinkID=$id");
+	}
+	public function sosyalMedyaLinkSorgula($id)
+	{
+		$query = $this->db->select("select * from sosyalmedyalinkleri where LinkID=$id");
+		if(count($query)>0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getSosyalMedyaLink($id)
+	{
+		return $this->db->select("select * from sosyalmedyalinkleri where LinkID=$id");
+	}
+	public function sosyalMedyaLinkGuncelle($data,$id)
+	{
+		return $this->db->update("sosyalmedyalinkleri",$data,"LinkID=$id");
+	}
+	/*----------------------------------------------*/
 	
 }
