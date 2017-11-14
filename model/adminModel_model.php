@@ -137,6 +137,7 @@ class adminModel extends Model{
 	}
 	public function makaleSil($id)
 	{
+		echo "sil";
 		return $this->db->delete("makaleler","MakaleID=$id");
 	}
 	public function makaleGuncelle($data,$id)
@@ -240,6 +241,10 @@ class adminModel extends Model{
 	public function getFooterLinkler()
 	{
 		return $this->db->select("select * from footerlinkleri,footerbloklari,makaleler where footerlinkleri.MakaleID=makaleler.MakaleID and footerlinkleri.FooterBlokID=footerbloklari.FooterBlokID");
+	}
+	public function getFooterLinkUrl()
+	{
+		return $this->db->select("select * from footerlinkleri,footerbloklari where footerlinkleri.FooterBlokID=footerbloklari.FooterBlokID and footerlinkleri.Url!=''");
 	}
 	public function footerLinkEkle($data){
 		return $this->db->insert("footerlinkleri",$data);

@@ -105,6 +105,7 @@ class AdminFooter extends Controller{
 		}
 		$model = $this->load->model("adminModel");
 		$data["linkler"] = $model->getFooterLinkler();
+		$data["url_link"] = $model->getFooterLinkUrl();
 		$this->load->view("AdminTasarim/header");
 		$this->load->view("AdminPanel/FooterLinkler",$data);
 		$this->load->view("AdminTasarim/footer");

@@ -15,7 +15,7 @@
 	}
 </script>
 <section class="content-header">
-	<h1>Footer Link Ekle</h1>
+	<h1>Footer Link Güncelle</h1>
 </section>
 <section class="content">
 	<div class="box">

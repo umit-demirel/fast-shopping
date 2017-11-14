@@ -59,6 +59,7 @@ class AdminMakale extends Controller{
 			{
 				//silme islemleri
 				$makale_sil = $model->makaleSil($id);
+				
 				if($makale_sil)
 				{
 					header("Location:".SITE_URL."/AdminMakale/makaleler/success");
