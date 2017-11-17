@@ -350,6 +350,19 @@ if(isset($_COOKIE["fastshoppingAdminEmail"]) && isset($_COOKIE["fastshoppingAdmi
             </li>
 			
 			<li>
+              <a href="<?php echo SITE_URL; ?>/AdminUye/bireysel_uyeler">
+                <i class="fa fa-user"></i>
+                <span>Bireysel Üyeler</span><i class="fa fa-angle-left pull-right"></i>
+              </a>
+            </li>
+			<li>
+              <a href="<?php echo SITE_URL; ?>/AdminUye/firma_uyeler">
+                <i class="fa fa-users"></i>
+                <span>Firma Üyeler</span><i class="fa fa-angle-left pull-right"></i>
+              </a>
+            </li>
+			
+			<li>
               <a href="<?php echo SITE_URL; ?>/AdminEbulten/ebulten">
                 <i class="fa fa-list"></i>
                 <span>E-Bülten Listesi</span><i class="fa fa-angle-left pull-right"></i>

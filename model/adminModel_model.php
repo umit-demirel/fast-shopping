@@ -324,5 +324,97 @@ class adminModel extends Model{
 		return $this->db->update("sosyalmedyalinkleri",$data,"LinkID=$id");
 	}
 	/*----------------------------------------------*/
-	
+	/*Üye İşlemleri*/
+	public function getBireyselUyeler()
+	{
+		return $this->db->select("select * from bireyseluye order by UyeID desc");
+	}
+	public function getBireyselUyeKontrol($id)
+	{
+		$query = $this->db->select("select * from bireyseluye where UyeID=$id");
+		if(count($query)>0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function bireyselUyeSil($id)
+	{
+		return $this->db->delete("bireyseluye","UyeID=$id");
+	}
+	public function bireyselUyeAra($kelime,$arama_tipi)
+	{
+		if($arama_tipi==1)
+		{
+			//Ad alanına göre arama yap
+			return $this->db->select("select * from bireyseluye where Ad like '%$kelime%'");
+		}else if($arama_tipi==2)
+		{
+			//Soyad alanına göre arama yap
+			return $this->db->select("select * from bireyseluye where Soyad like '%$kelime%'");
+		}else if($arama_tipi==3){
+			//Eposta Adresine göre arama yap
+			return $this->db->select("select * from bireyseluye where Email like '%$kelime%'");
+		}
+		else if($arama_tipi==4){
+			//Kulllanıcı adına göre arama yap
+			return $this->db->select("select * from bireyseluye where KullaniciAd like '%$kelime%'");
+		}
+		else{
+			return null;
+		}
+	}
+	public function getBireyselUyeProfili($id)
+	{
+		return $this->db->select("select * from bireyseluye where UyeID=$id");
+	}
+	public function getBireyselUyeUrunleri($id)
+	{
+		return $this->db->select("select * from bireyselurun,kategoriler where bireyselurun.UyeID=$id and UrunKategoriID=kategoriler.KategoriID");
+	}
+	/*----------------------------------------------*/
+	/*Üye Firma işlemleri*/
+	public function getFirmaUyeler()
+	{
+		return $this->db->select("select * from firmauye order by UyeID desc");
+	}
+	public function firmaUyeAra($kelime,$arama_tipi)
+	{
+		if($arama_tipi==1)
+		{
+			//Firma Adı alanına göre arama yap
+			return $this->db->select("select * from firmauye where FirmaAd like '%$kelime%'");
+		}else if($arama_tipi==2)
+		{
+			//Firma Eposta alanına göre arama yap
+			return $this->db->select("select * from firmauye where FirmaEposta like '%$kelime%'");
+		}
+		else{
+			return null;
+		}
+	}
+	public function getFirmalUyeUrunleri($id)
+	{
+		return $this->db->select("select * from firmaurun,kategoriler where firmaurun.FirmaID=$id and UrunKategoriID=kategoriler.KategoriID");
+	}
+	public function getFirmaUyeProfili($id)
+	{
+		return $this->db->select("select * from firmauye where UyeID=$id");
+	}
+	public function getFirmaUyeKontrol($id)
+	{
+		$query = $this->db->select("select * from firmauye where UyeID=$id");
+		if(count($query)>0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function firmaUyeSil($id)
+	{
+		return $this->db->delete("firmauye","UyeID=$id");
+	}
+	/*----------------------------------------------*/
 }
