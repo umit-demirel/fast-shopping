@@ -417,4 +417,40 @@ class adminModel extends Model{
 		return $this->db->delete("firmauye","UyeID=$id");
 	}
 	/*----------------------------------------------*/
+	/*Reklam Yönetim İşlemleri*/
+	public function getReklamlar()
+	{
+		return $this->db->select("select * from reklamlar");
+	}
+	public function reklamImageEkle($data)
+	{
+		return $this->db->insert("reklamlar",$data);
+	}
+	public function getReklamResmiAdi($id)
+	{
+		return $this->db->select("select * from reklamlar where ReklamID=$id");
+	}
+	public function reklamSil($id)
+	{
+		return $this->db->delete("reklamlar","ReklamID=$id");
+	}
+	public function reklamImageGuncelle($data,$id)
+	{
+		return $this->db->update("reklamlar",$data,"ReklamID=$id");
+	}
+	public function reklamPasifState($id)
+	{
+		$data = array(
+			"aktif"=>0
+		);
+		return $this->db->update("reklamlar",$data,"ReklamID=$id");
+	}
+	public function reklamAktifState($id)
+	{
+		$data = array(
+			"aktif"=>1
+		);
+		return $this->db->update("reklamlar",$data,"ReklamID=$id");
+	}
+	/*----------------------------------------------*/
 }
