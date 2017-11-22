@@ -384,6 +384,13 @@ if(isset($_COOKIE["fastshoppingAdminEmail"]) && isset($_COOKIE["fastshoppingAdmi
             </li>
 			
 			<li>
+              <a href="<?php echo SITE_URL; ?>/AdminGelenKutusu/gelen_kutusu">
+                <i class="fa fa-envelope"></i>
+                <span>Gelen Kutusu</span><i class="fa fa-angle-left pull-right"></i>
+              </a>
+            </li>
+			
+			<li>
               <a href="<?php echo SITE_URL; ?>/AdminReklam/Reklam">
                 <i class="fa fa-line-chart"></i>
                 <span>Reklam Yönetimi</span><i class="fa fa-angle-left pull-right"></i>

@@ -453,4 +453,40 @@ class adminModel extends Model{
 		return $this->db->update("reklamlar",$data,"ReklamID=$id");
 	}
 	/*----------------------------------------------*/
+	/*Gelen Kutusu*/
+	public function gelenMesajlar()
+	{
+		return $this->db->select("select * from iletisim order by IletisimID desc");
+	}
+	public function mesajAra($kelime,$secim)
+	{
+		if($secim==1)
+		{
+			return $this->db->select("select * from iletisim where Konu like '%$kelime%'");
+		}else if($secim==2){
+			return $this->db->select("select * from iletisim where Email like '%$kelime%'");
+		}else if($secim==3){
+			return $this->db->select("select * from iletisim where Okundumu=1");
+		}else if($secim==4){
+			return $this->db->select("select * from iletisim where Okundumu=0");
+		}else{
+			return false;
+		}
+	}
+	public function getMesaj($id)
+	{
+		return $this->db->select("select * from iletisim where IletisimID=$id");
+	}
+	public function mesajOkundu($id)
+	{
+		$data = array(
+			"Okundumu"=>"1"
+		);
+		return $this->db->update("iletisim",$data,"IletisimID=$id");
+	}
+	public function mesajSil($id)
+	{
+		return $this->db->delete("iletisim","IletisimID=$id");
+	}
+	/*----------------------------------------------*/
 }
