@@ -333,6 +333,17 @@ if(isset($_COOKIE["fastshoppingAdminEmail"]) && isset($_COOKIE["fastshoppingAdmi
               </ul>
             </li>
 			
+			<li class="treeview active">
+              <a href="#">
+                <i class="fa fa-plus-square"></i> <span>İlan Yönetimi</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+				<li><a href="<?php echo SITE_URL; ?>/AdminIlanlar/bireysel_ilanlar"><i class="fa fa-circle-o"></i>Bireysel Üye İlanları</a></li>
+				<li><a href="<?php echo SITE_URL; ?>/AdminIlanlar/firma_ilanlar"><i class="fa fa-circle-o"></i>Firma İlanları</a></li>
+				
+              </ul>
+            </li>
+			
 			<li>
               <a href="<?php echo SITE_URL; ?>/admin/site_ayarlari">
                 <i class="fa fa-gears"></i>

@@ -489,4 +489,154 @@ class adminModel extends Model{
 		return $this->db->delete("iletisim","IletisimID=$id");
 	}
 	/*----------------------------------------------*/
+	/*İlan Yönetimi*/
+	//Bireysel İlan İşlemleri
+	public function bireyselUyeIlanlari()
+	{
+		return $this->db->select("select * from bireyselurun order by UrunID desc");
+	}
+	public function bireyselIlanAktifEt($id)
+	{
+		$query = $this->db->select("select * from bireyselurun where UrunID=$id");
+		if(count($query)>0)
+		{
+			$data = array(
+				"UrunDurum"=>"1"
+			);
+			$guncelle = $this->db->update("bireyselurun",$data,"UrunID=$id");
+			if($guncelle)
+			{
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	public function bireyselIlanPasifEt($id)
+	{
+		$query = $this->db->select("select * from bireyselurun where UrunID=$id");
+		if(count($query)>0)
+		{
+			$data = array(
+				"UrunDurum"=>"0"
+			);
+			$guncelle = $this->db->update("bireyselurun",$data,"UrunID=$id");
+			if($guncelle)
+			{
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	public function bireyselIlanSil($id)
+	{
+		$query = $this->db->select("select * from bireyselurun where UrunID=$id");
+		if(count($query)>0)
+		{
+			$sil = $this->db->delete("bireyselurun","UrunID=$id");
+			if($sil)
+			{
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	public function bireyselIlanAra($kelime,$tip)
+	{
+		if($tip==1)
+		{
+			return $this->db->select("select * from bireyselurun where UrunAd like '%$kelime%' order by UrunID desc");
+		}else if($tip==2)
+		{
+			return $this->db->select("select * from bireyselurun where UrunDurum=1");
+		}else if($tip==3)
+		{
+			return $this->db->select("select * from bireyselurun where UrunDurum=0");
+		}else{
+			return false;
+		}
+	}
+	//Firma İlan İşlemleri
+	public function firmaUyeIlanlari()
+	{
+		return $this->db->select("select * from firmaurun order by UrunID desc");
+	}
+	public function firmaIlanAktifEt($id)
+	{
+		$query = $this->db->select("select * from firmaurun where UrunID=$id");
+		if(count($query)>0)
+		{
+			$data = array(
+				"UrunDurum"=>"1"
+			);
+			$guncelle = $this->db->update("firmaurun",$data,"UrunID=$id");
+			if($guncelle)
+			{
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	public function firmaIlanPasifEt($id)
+	{
+		$query = $this->db->select("select * from firmaurun where UrunID=$id");
+		if(count($query)>0)
+		{
+			$data = array(
+				"UrunDurum"=>"0"
+			);
+			$guncelle = $this->db->update("firmaurun",$data,"UrunID=$id");
+			if($guncelle)
+			{
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	public function firmaIlanSil($id)
+	{
+		$query = $this->db->select("select * from firmaurun where UrunID=$id");
+		if(count($query)>0)
+		{
+			$sil = $this->db->delete("firmaurun","UrunID=$id");
+			if($sil)
+			{
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	public function firmaIlanAra($kelime,$tip)
+	{
+		if($tip==1)
+		{
+			return $this->db->select("select * from firmaurun where UrunAdi like '%$kelime%' order by UrunID desc");
+		}else if($tip==2)
+		{
+			return $this->db->select("select * from firmaurun where UrunDurum=1");
+		}else if($tip==3)
+		{
+			return $this->db->select("select * from firmaurun where UrunDurum=0");
+		}else{
+			return false;
+		}
+	}
+	/*----------------------------------------------*/
 }
