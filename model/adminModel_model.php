@@ -639,4 +639,43 @@ class adminModel extends Model{
 		}
 	}
 	/*----------------------------------------------*/
+	/*Yorum işlemleri*/
+	public function getYorumlar()
+	{
+		return $this->db->select("select * from yorumlar order by YorumID desc");
+	}
+	public function getYorum($id)
+	{
+		return $this->db->select("select * from yorumlar where YorumID=$id");
+	}
+	public function getYorumSorgula($id)
+	{
+		$query = $this->db->select("select * from yorumlar where YorumID=$id");
+		if(count($query)>0)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function yorumCevap($data)
+	{
+		return $this->db->insert("yorumcevap",$data);
+	}
+	public function yorumDuzenle($data,$id)
+	{
+		return $this->db->update("yorumlar",$data,"YorumID=$id");
+	}
+	public function yorumSil($id)
+	{
+		$yorum_sil = $this->db->delete("yorumlar","YorumID=$id");
+		$cevap_sil = $this->db->delete("yorumcevap","YorumID=$id");
+		if($yorum_sil && $cevap_sil)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
+	/*----------------------------------------------*/
 }
