@@ -35,8 +35,21 @@ class admin extends Controller{
 	}
 	public function dashboard()
 	{
-		$this->load->view("AdminTasarim/header");
-		$this->load->view("AdminPanel/Dashboard");
+		$model = $this->load->model("adminModel");
+		$data["aktif_bireysel_uye_sayisi"] = $model->aktif_bireysel_uye_sayisi();
+		$data["aktif_firma_uye_sayisi"] = $model->aktif_firma_uye_sayisi();
+		$data["bireysel_urun_onayli"] = $model->bireysel_urun_onayli();
+		$data["bireysel_urun_onaysiz"] = $model->bireysel_urun_onaysiz();
+		$data["firma_urun_onayli"] = $model->firma_urun_onayli();
+		$data["firma_urun_onaysiz"] = $model->firma_urun_onaysiz();
+		$data["makale_sayisi"] = $model->makale_sayisi();
+		$data["mesaj_sayisi"] = $model->mesaj_sayisi();
+		$data["okunmayan_mesaj_sayisi"] = $model->okunmayan_mesaj_sayisi();
+		$data["ana_kategoriler"] = $model->ana_kategoriler();
+		$data["alt_kategoriler"] = $model->alt_kategoriler();
+		
+ 		$this->load->view("AdminTasarim/header");
+		$this->load->view("AdminPanel/Dashboard",$data);
 		$this->load->view("AdminTasarim/footer");
 	}
 	public function cikis(){

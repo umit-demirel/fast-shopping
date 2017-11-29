@@ -678,4 +678,61 @@ class adminModel extends Model{
 		}
 	}
 	/*----------------------------------------------*/
+	/*Dashboard Verileri*/
+	public function aktif_bireysel_uye_sayisi()
+	{
+		$query = $this->db->select("select * from bireyseluye");
+		return count($query);
+	}
+	public function aktif_firma_uye_sayisi()
+	{
+		$query = $this->db->select("select * from firmauye");
+		return count($query);
+	}
+	public function bireysel_urun_onaysiz()
+	{
+		$query = $this->db->select("select * from bireyselurun where UrunDurum=0");
+		return count($query);
+	}
+	public function bireysel_urun_onayli()
+	{
+		$query = $this->db->select("select * from bireyselurun where UrunDurum=1");
+		return count($query);
+	}
+	public function firma_urun_onaysiz()
+	{
+		$query = $this->db->select("select * from firmaurun where UrunDurum=0");
+		return count($query);
+	}
+	public function firma_urun_onayli()
+	{
+		$query = $this->db->select("select * from firmaurun where UrunDurum=1");
+		return count($query);
+	}
+	public function makale_sayisi()
+	{
+		$query = $this->db->select("select * from makaleler");
+		return count($query);
+	}
+	public function mesaj_sayisi()
+	{
+		$query = $this->db->select("select * from iletisim");
+		return count($query);
+	}
+	public function okunmayan_mesaj_sayisi()
+	{
+		$query = $this->db->select("select * from iletisim where Okundumu=0");
+		return count($query);
+	}
+	public function ana_kategoriler()
+	{
+		$query = $this->db->select("select * from kategoriler where AnaKategoriID=0");
+		return count($query);
+	}
+	public function alt_kategoriler()
+	{
+		$query = $this->db->select("select * from kategoriler where AnaKategoriID!=0");
+		return count($query);
+	}
+	/*---------------------------------------------*/
 }
